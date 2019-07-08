@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using System.IO;
 
@@ -32,40 +26,53 @@ namespace rename
         private void button2_Click(object sender, EventArgs e)
         {
             test = false;
+            richTextBox1.Clear();
             serchfile(path.SelectedPath);
-        }
-
-        private void serchfile(string path)
-        {
-            foreach (string file in Directory.GetDirectories(path))
-                serchfile(file);
-            foreach (string file in Directory.GetFiles(path))
-            {
-                string newfile = "";
-                string[] text = textBox2.Text.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
-                for (int i = 0; i < text.Length; i++)
-                    if (file.IndexOf(text[i][0]) != -1)
-                    {
-                        if (newfile == "")
-                            newfile = file.Replace(text[i][0], text[i][2]);
-                        else
-                            newfile = newfile.Replace(text[i][0], text[i][2]);
-
-                        if (i == text.Length - 1)
-                        {
-                            newfile = newfile.Insert(file.IndexOf(text[i][0]) + 1, " ");
-                            richTextBox1.AppendText(file + " " + newfile + "\n");
-                            if(!test)
-                                File.Move(file, newfile);
-                        }
-                    }
-            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             test = true;
+            richTextBox1.Clear();
             serchfile(path.SelectedPath);
+        }
+
+        private void serchfile(string path)
+        {
+            try
+            {
+                foreach (string file in Directory.GetDirectories(textBox1.Text))
+                    serchfile(file);
+                foreach (string file in Directory.GetFiles(textBox1.Text))
+                {
+                    string newfile = "";
+                    string[] text = textBox2.Text.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
+                    for (int i = 0; i < text.Length; i++)
+                    {
+                        string[] str = text[i].Split('=');
+                        if (file.IndexOf(str[0]) != -1)
+                        {
+                            if (newfile == "")
+                                newfile = file.Replace(str[0], str[1]);
+                            else
+                                newfile = newfile.Replace(str[0], str[1]);
+
+                            if (i == text.Length - 1)
+                            {
+                                if (newfile.IndexOf(textBox3.Text) != -1)
+                                    newfile = newfile.Insert(newfile.IndexOf(textBox3.Text) + textBox3.Text.Length, " ");
+                                richTextBox1.AppendText(file + " -----> " + newfile + "\n");
+                                if (!test)
+                                    File.Move(file, newfile);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (IndexOutOfRangeException)
+            {
+                MessageBox.Show("格式錯誤");
+            }
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
