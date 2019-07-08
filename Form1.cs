@@ -6,7 +6,6 @@ namespace rename
 {
     public partial class Form1 : Form
     {
-        FolderBrowserDialog path = new FolderBrowserDialog();
         bool test = false;
         public Form1()
         {
@@ -19,6 +18,7 @@ namespace rename
 
         private void button1_Click(object sender, EventArgs e)
         {
+            FolderBrowserDialog path = new FolderBrowserDialog();
             if (path.ShowDialog() == DialogResult.OK)
                 textBox1.Text = path.SelectedPath;
         }
@@ -27,23 +27,23 @@ namespace rename
         {
             test = false;
             richTextBox1.Clear();
-            serchfile(path.SelectedPath);
+            serchfile(textBox1.Text);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             test = true;
             richTextBox1.Clear();
-            serchfile(path.SelectedPath);
+            serchfile(textBox1.Text);
         }
 
         private void serchfile(string path)
         {
             try
             {
-                foreach (string file in Directory.GetDirectories(textBox1.Text))
+                foreach (string file in Directory.GetDirectories(path))
                     serchfile(file);
-                foreach (string file in Directory.GetFiles(textBox1.Text))
+                foreach (string file in Directory.GetFiles(path))
                 {
                     string newfile = "";
                     string[] text = textBox2.Text.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
@@ -61,7 +61,9 @@ namespace rename
                             {
                                 if (newfile.IndexOf(textBox3.Text) != -1)
                                     newfile = newfile.Insert(newfile.IndexOf(textBox3.Text) + textBox3.Text.Length, " ");
-                                richTextBox1.AppendText(file + " -----> " + newfile + "\n");
+                                string[] fi = file.Split('\\');
+                                string[] newfi = newfile.Split('\\');
+                                richTextBox1.AppendText(fi[fi.Length - 1] + " -----> " + newfi[newfi.Length - 1] + "\n");
                                 if (!test)
                                     File.Move(file, newfile);
                             }
