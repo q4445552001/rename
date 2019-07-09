@@ -47,13 +47,14 @@ namespace rename
                 {
                     string newfile = "";
                     string[] text = textBox2.Text.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
+                    string fi = file.Split('\\')[file.Split('\\').Length - 1];
                     for (int i = 0; i < text.Length; i++)
                     {
                         string[] str = text[i].Split('=');
-                        if (file.IndexOf(str[0]) != -1)
+                        if (fi.IndexOf(str[0]) != -1)
                         {
                             if (newfile == "")
-                                newfile = file.Replace(str[0], str[1]);
+                                newfile = fi.Replace(str[0], str[1]);
                             else
                                 newfile = newfile.Replace(str[0], str[1]);
 
@@ -61,11 +62,9 @@ namespace rename
                             {
                                 if (newfile.IndexOf(textBox3.Text) != -1)
                                     newfile = newfile.Insert(newfile.IndexOf(textBox3.Text) + textBox3.Text.Length, " ");
-                                string[] fi = file.Split('\\');
-                                string[] newfi = newfile.Split('\\');
-                                richTextBox1.AppendText(fi[fi.Length - 1] + " -----> " + newfi[newfi.Length - 1] + "\n");
+                                richTextBox1.AppendText(fi + " -----> " + newfile + "\n");
                                 if (!test)
-                                    File.Move(file, newfile);
+                                    File.Move(file, path + "\\" + newfile);
                             }
                         }
                     }
