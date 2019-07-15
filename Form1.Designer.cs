@@ -56,7 +56,7 @@
             this.richTextBox1.Location = new System.Drawing.Point(2, 28);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(952, 227);
+            this.richTextBox1.Size = new System.Drawing.Size(346, 227);
             this.richTextBox1.TabIndex = 2;
             this.richTextBox1.Text = "";
             // 
@@ -76,7 +76,7 @@
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button3.Location = new System.Drawing.Point(879, 255);
+            this.button3.Location = new System.Drawing.Point(273, 255);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 22);
             this.button3.TabIndex = 5;
@@ -88,7 +88,7 @@
             // 
             this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox3.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::rename.Properties.Settings.Default, "space", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.textBox3.Location = new System.Drawing.Point(832, 255);
+            this.textBox3.Location = new System.Drawing.Point(226, 255);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(41, 22);
             this.textBox3.TabIndex = 6;
@@ -101,7 +101,7 @@
             this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::rename.Properties.Settings.Default, "prop", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.textBox2.Location = new System.Drawing.Point(83, 255);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(743, 22);
+            this.textBox2.Size = new System.Drawing.Size(137, 22);
             this.textBox2.TabIndex = 4;
             this.textBox2.Text = global::rename.Properties.Settings.Default.prop;
             // 
@@ -112,7 +112,7 @@
             this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::rename.Properties.Settings.Default, "path", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.textBox1.Location = new System.Drawing.Point(83, 2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(871, 22);
+            this.textBox1.Size = new System.Drawing.Size(265, 22);
             this.textBox1.TabIndex = 1;
             this.textBox1.Text = global::rename.Properties.Settings.Default.path;
             // 
@@ -120,7 +120,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(957, 279);
+            this.ClientSize = new System.Drawing.Size(351, 279);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.textBox2);

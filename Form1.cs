@@ -60,7 +60,7 @@ namespace rename
 
                             if (i == text.Length - 1)
                             {
-                                if (newfile.IndexOf(textBox3.Text) != -1)
+                                if (newfile.IndexOf(textBox3.Text) != -1 && textBox3.Text != "")
                                     newfile = newfile.Insert(newfile.IndexOf(textBox3.Text) + textBox3.Text.Length, " ");
                                 richTextBox1.AppendText(fi + " -----> " + newfile + "\n");
                                 if (!test)
